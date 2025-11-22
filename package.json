@@ -1,0 +1,35 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "blog",
+    "nodejs"
+  ],
+  "homepage": "https://github.com/kandy1610/nodejs_blog#readme",
+  "bugs": {
+    "url": "https://github.com/kandy1610/nodejs_blog/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kandy1610/nodejs_blog.git"
+  },
+  "license": "ISC",
+  "author": "kandy",
+  "type": "commonjs",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon --inspect src/index.js",
+    "watch": "sass -w src/resources/scss/app.scss src/public/css/app.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.3"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.1",
+    "nodemon": "^3.1.11",
+    "sass": "^1.94.1"
+  }
+}
