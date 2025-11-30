@@ -22,15 +22,11 @@
     "beau": "lint-staged",
     "start": "nodemon --inspect src/index.js",
     "watch": "sass -w src/resources/scss/app.scss src/public/css/app.css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
   },
   "lint-staged": {
     "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "dependencies": {
     "express": "^5.1.0",
