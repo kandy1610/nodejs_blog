@@ -19,17 +19,24 @@
   "type": "commonjs",
   "main": "src/index.js",
   "scripts": {
+    "beau": "lint-staged",
     "start": "nodemon --inspect src/index.js",
     "watch": "sass -w src/resources/scss/app.scss src/public/css/app.css",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "lint-staged": {
+    "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
   },
   "dependencies": {
     "express": "^5.1.0",
     "express-handlebars": "^8.0.3"
   },
   "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "morgan": "^1.10.1",
     "nodemon": "^3.1.11",
+    "prettier": "^3.7.3",
     "sass": "^1.94.1"
   }
 }
