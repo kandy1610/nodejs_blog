@@ -24,17 +24,17 @@ app.engine(
     'hbs',
     engine({
         extname: '.hbs',
-        layoutsDir: path.join(__dirname, 'resources/views/layouts'),
-        partialsDir: path.join(__dirname, 'resources/views/partials'),
+        layoutsDir: path.join(__dirname, 'resources', 'views', 'layouts'),
+        partialsDir: path.join(__dirname, 'resources', 'views', 'partials'),
     }),
 );
 
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'resources\\views'));
+app.set('views', path.join(__dirname, 'resources', 'views'));
 
 // route init
 route(app);
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`App listening on port ${port}`);
 });
