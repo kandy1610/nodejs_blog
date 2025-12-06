@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const { engine } = require('express-handlebars');
+const methodOverride = require('method-override');
 const path = require('path');
 
 //connect db
@@ -19,6 +20,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded());
 app.use(express.json());
 
+app.use(methodOverride('_method'));
+
 //templace engine
 app.engine(
     'hbs',
@@ -26,6 +29,9 @@ app.engine(
         extname: '.hbs',
         layoutsDir: path.join(__dirname, 'resources', 'views', 'layouts'),
         partialsDir: path.join(__dirname, 'resources', 'views', 'partials'),
+        helpers: {
+            sum: (a, b) => a + b,
+        },
     }),
 );
 

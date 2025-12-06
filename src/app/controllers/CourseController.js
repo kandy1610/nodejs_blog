@@ -13,7 +13,7 @@ class CourseController {
             .catch(next);
     }
 
-    //post /courses/create
+    //get /courses/create
     create(req, res, next) {
         res.render('courses/create');
     }
@@ -27,6 +27,24 @@ class CourseController {
             .save()
             .then(() => res.redirect('/'))
             .catch((err) => {});
+    }
+
+    //get /courses/:id/edit
+    edit(req, res, next) {
+        Course.findById(req.params.id)
+            .then((course) =>
+                res.render('courses/edit', {
+                    course: mongooseToObject(course),
+                }),
+            )
+            .catch(next);
+    }
+
+    //put /courses/:id
+    update(req, res, next) {
+        Course.updateOne({ _id: req.params.id }, req.body)
+            .then(() => res.redirect('/my/stored/courses'))
+            .catch(next);
     }
 }
 // xuất news
