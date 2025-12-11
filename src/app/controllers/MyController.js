@@ -12,6 +12,16 @@ class MyController {
             })
             .catch(next);
     }
+
+    trashCourses(req, res, next) {
+        Course.findDeleted({})
+            .then((courses) => {
+                res.render('my/trash-courses', {
+                    courses: mutipleMongooseToObject(courses),
+                });
+            })
+            .catch(next);
+    }
 }
 
 // xuất news

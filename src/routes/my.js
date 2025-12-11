@@ -5,5 +5,6 @@ const MyController = require('../app/controllers/MyController');
 // mycontroller index
 
 router.get('/stored/courses', MyController.storeCourses);
+router.get('/trash/courses', MyController.trashCourses);
 
 module.exports = router;

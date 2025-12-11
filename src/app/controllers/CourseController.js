@@ -20,12 +20,11 @@ class CourseController {
 
     //post /courses/store
     store(req, res, next) {
-        const formdata = req.body;
-        formdata.image = `https://i.ytimg.com/vi/${formdata.videoId}/hq720.jpg`;
-        const course = new Course(formdata);
+        req.body.image = `https://i.ytimg.com/vi/${req.body.videoId}/hq720.jpg`;
+        const course = new Course(req.body);
         course
             .save()
-            .then(() => res.redirect('/'))
+            .then(() => res.redirect('/my/stored/courses'))
             .catch((err) => {});
     }
 
@@ -49,10 +48,25 @@ class CourseController {
 
     // delete /corses/:id
     delete(req, res, next) {
+        Course.delete({ _id: req.params.id })
+            .then(() => res.redirect('/my/stored/courses'))
+            .catch(next);
+    }
+
+    // delete /corses/:id/force
+    forceDestroy(req, res, next) {
         Course.deleteOne({ _id: req.params.id })
             .then(() => res.redirect('/my/stored/courses'))
             .catch(next);
     }
+
+    // patch /corses/:id/restore
+    restore(req, res, next) {
+        Course.restore({ _id: req.params.id })
+            .then(() => res.redirect('/my/stored/courses'))
+            .catch(next);
+    }
 }
+
 // xuất news
 module.exports = new CourseController();
