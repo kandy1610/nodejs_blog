@@ -15,4 +15,9 @@ td.course-name {
   word-break: break-word;
 }
 
+.checkbox-select-all-options {
+  width: 160px;
+  margin: 0 16px;
+}
+
 /*# sourceMappingURL=app.css.map */

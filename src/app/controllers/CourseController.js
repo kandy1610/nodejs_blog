@@ -66,6 +66,19 @@ class CourseController {
             .then(() => res.redirect('/my/stored/courses'))
             .catch(next);
     }
+
+    //post /courses/handle-form-action
+    handleFormActions(req, res, next) {
+        switch (req.body.action) {
+            case 'delete':
+                Course.delete({ _id: { $in: req.body['courseIds[]'] } })
+                    .then(() => res.redirect('/my/stored/courses'))
+                    .catch(next);
+                break;
+            default:
+                res.json({ message: 'Action is invalid' });
+        }
+    }
 }
 
 // xuất news
