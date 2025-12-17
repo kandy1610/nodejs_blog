@@ -14,6 +14,7 @@ const app = express();
 const port = 3000;
 
 const route = require('./routes');
+const handlebars = require('./helpers/handlebars');
 
 app.use(express.static(path.join(__dirname, 'public')));
 //HTTP
@@ -34,30 +35,7 @@ app.engine(
         extname: '.hbs',
         layoutsDir: path.join(__dirname, 'resources', 'views', 'layouts'),
         partialsDir: path.join(__dirname, 'resources', 'views', 'partials'),
-        helpers: {
-            sum: (a, b) => a + b,
-            sortable: (field, sort) => {
-                const sortType = field === sort.column ? sort.type : 'default';
-
-                const icons = {
-                    default: 'bi bi-filter',
-                    asc: 'bi bi-sort-down',
-                    desc: 'bi bi-sort-up',
-                };
-
-                const types = {
-                    default: 'desc',
-                    asc: 'desc',
-                    desc: 'asc',
-                };
-
-                const icon = icons[sortType];
-                const type = types[sortType];
-
-                return `<a href="?_sort&column=${field}&type=${type}">
-                <span class="${icon}"></span></a>`;
-            },
-        },
+        helpers: require('./helpers/handlebars'),
     }),
 );
 
