@@ -3,7 +3,7 @@
       <h3>Khóa học của tôi</h3>
       <a href="/my/trash/courses">Thùng rác ({{deletedCount}})</a>
 
-      <div class="mt-4 d-flex align-item-center">
+      <div class="mt-4 mb-3 d-flex align-item-center">
         <div class="form-check">
           <input class="form-check-input" type="checkbox" value="" id="chexbox-all">
           <label class="form-check-label" for="chexbox-all">
@@ -16,7 +16,7 @@
           <option value="delete">Xóa</option>
         </select>
 
-        <button type="submit" class="btn btn-primary btn-sm check-all-submit-btn disabled">
+        <button type="submit" class="btn btn-primary btn-sm check-all-submit-btn" disabled>
           Thực hiện
         </button>
       </div>
@@ -25,9 +25,18 @@
     <thead>
         <tr>
             <th scope="col" colspan="2">#</th>
-            <th scope="col">Tên khóa học</th>
-            <th scope="col">Trình độ</th>
-            <th scope="col" colspan="2">Thời gian học</th>
+            <th scope="col">
+              Tên khóa học
+              {{{sortable 'name' _sort}}}
+            </th>
+            <th scope="col">
+              Trình độ
+              {{{sortable 'level' _sort}}}
+              </th>
+            <th scope="col" colspan="2">
+              Thời gian học
+              {{{sortable 'createdAt' _sort}}}
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -130,9 +139,9 @@
         function renderCheckAllSubmitBtn () {
           var checkCount = $('input[name="courseIds[]"]:checked').length
           if (checkCount > 0) {
-            checkAllSubmitBtn.removeClass('disabled')
+            checkAllSubmitBtn.removeAttr('disabled', false)
           } else {
-            checkAllSubmitBtn.addClass('disabled')
+            checkAllSubmitBtn.attr('disabled', true)
           }
         }
 
