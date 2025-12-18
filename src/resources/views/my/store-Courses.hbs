@@ -24,7 +24,11 @@
     <table class="table" aria-colspan="mt-4">
     <thead>
         <tr>
-            <th scope="col" colspan="2">#</th>
+            <th scope="col"></th>
+            <th scope="col">
+              ID
+              {{{sortable '_id' _sort}}}
+            </th>
             <th scope="col">
               Tên khóa học
               {{{sortable 'name' _sort}}}
@@ -49,7 +53,7 @@
               </div>
             </td>
           
-            <th scope="row">{{sum @index 1}}</th>
+            <th scope="row">{{this._id}}</th>
             <td class="text-break">{{this.name}}</td>
             <td class="text-break">{{this.level}}</td>
             <td class="text-break">{{this.updatedAt}}</td>

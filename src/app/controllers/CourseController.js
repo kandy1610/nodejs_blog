@@ -25,7 +25,7 @@ class CourseController {
         course
             .save()
             .then(() => res.redirect('/my/stored/courses'))
-            .catch((err) => {});
+            .catch(next);
     }
 
     //get /courses/:id/edit
